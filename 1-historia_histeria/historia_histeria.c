@@ -1,6 +1,4 @@
 #include "historia_histeria.h"
-#include <stdlib.h>
-#include <stdio.h>
 
 #define MAX_LINES 1000
 #define MAX_VALUES 2
@@ -21,4 +19,22 @@ HistoriaHisteriaInput get_input(char* filename) {
   fclose(file);
 
   return (HistoriaHisteriaInput){left, right, index};
+}
+
+int distance(HistoriaHisteriaInput input) {
+  int* left = input.left;
+  int* right = input.right;
+  int value = 0;
+  
+  for (int i=0; i<input.size; i++) {
+    int diff = abs(input.left[i] - input.right[i]);
+    value += diff;
+  }
+
+  return value;
+}
+
+void clean(HistoriaHisteriaInput input) {
+  free(input.left);
+  free(input.right);
 }

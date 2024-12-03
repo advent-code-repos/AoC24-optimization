@@ -2,28 +2,17 @@
 #include <stdlib.h>
 #include "historia_histeria.h"
 
-char* FILENAME = "./inputs/input.example";
+char* FILENAME = "./inputs/input";
 
 int main(void) {
-  printf("Hi optimization!\n\n");
+  printf("HISTORIA-HISTERIA - optimization!\n");
 
   HistoriaHisteriaInput input = get_input(FILENAME);
+  int distance_value = distance(input);
 
-  int* left = input.left;
-  int* right = input.right;
-  
-  printf("Left Array:\n");
-  for (int i=0; i<input.size; i++) {
-    printf("%d\n", left[i]);
-  }
+  printf("Distance value: %d", distance_value);
 
-  printf("Right Array:\n");
-  for (int i=0; i<input.size; i++) {
-    printf("%d\n", right[i]);
-  }
-  
-  free(input.left);
-  free(input.right);
+  clean(input);
 
   printf("\n");
 }
